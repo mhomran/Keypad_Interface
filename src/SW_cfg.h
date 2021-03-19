@@ -24,9 +24,15 @@
 * Defines an enumerated list of all normal swithes in the project
 */
 typedef enum {
-  SW_MY_SW,
-  SW_OPEN_VALVE,
-  MAX_SW_NUM
+  SW_0,
+  SW_1,
+  SW_2,
+  SW_3,
+  SW_4,
+  SW_5,
+  SW_6,
+  SW_7,
+  SW_MAX
 } SW_t;
 
 /**

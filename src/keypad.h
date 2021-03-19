@@ -13,7 +13,7 @@
 * Includes
 ******************************************************************************/
 #include <inttypes.h>
-#include "keypad_cfg.h" /**< For dio configuration */
+#include "keypad_cfg.h" 
 
 /******************************************************************************
 * Function Prototypes
@@ -22,9 +22,9 @@
 extern "C"{
 #endif
 
-void Keypad_Init(KeypadConfig_t * const Config);
-void Keypad_Update(void);
-uint8_t Keypad_GetState(Keypad_t Keypad, uint8_t* Data, uint8_t DataSize);
+extern void Keypad_Init(KeypadConfig_t * const Config);
+extern void Keypad_Update(void);
+extern uint8_t Keypad_GetState(Keypad_t Keypad, uint8_t* Data, uint8_t DataSize);
 
 #ifdef __cplusplus
 } // extern "C"

@@ -44,7 +44,7 @@ typedef struct
 extern "C"{
 #endif
 
-const KeypadConfig_t* Keypad_ConfigGet(void);
+extern KeypadConfig_t* const Keypad_GetConfig(void);
 
 #ifdef __cplusplus
 } // extern "C"
