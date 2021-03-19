@@ -15,10 +15,12 @@
 /******************************************************************************
 * Module Variable Definitions
 ******************************************************************************/
-static KeypadConfig_t * gConfig;
-/******************************************************************************
-* Module Variable Definitions
- ******************************************************************************/
+
+/**
+ * @brief A pointer to the configuration table.
+ */
+static KeypadConfig_t * gConfig; 
+
 /**
  * brief the keypad receive data buffers
  */
@@ -28,6 +30,11 @@ static uint8_t KeypadData[KEYPAD_MAX][KEYPAD_RCV_BUFF_SIZE];
  * brief the keypad receive buffers structures
  */
 static CircBuff_t KeypadBuff[KEYPAD_MAX];
+
+/**
+ * @brief an array to hold the last state of the keypad switches
+ */
+static SWState_t LastState[KEYPAD_MAX][KEYPAD_WIDTH_X_HEIGHT];
 
 /******************************************************************************
 * Function : Keypad_Init()
@@ -51,6 +58,12 @@ Keypad_Init(KeypadConfig_t* const Config)
   for(uint8_t i = 0; i < KEYPAD_MAX; i++)
     {
       KeypadBuff[i] = CircBuff_Create(KeypadData[i], KEYPAD_RCV_BUFF_SIZE);
+
+      //make sure the initial state is released
+      for(uint8_t sw = 0; sw < KEYPAD_WIDTH_X_HEIGHT; sw++)
+        {
+          LastState[i][sw] = SW_RELEASED;
+        }
     }
 }
 

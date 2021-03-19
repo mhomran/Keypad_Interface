@@ -32,7 +32,8 @@ setUp(void)
   Keypad_Init(gConfig);
 }
 
-void tearDown(void)
+void 
+tearDown(void)
 {
 }
 
