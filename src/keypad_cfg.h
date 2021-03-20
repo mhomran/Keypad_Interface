@@ -14,12 +14,18 @@
 **********************************************************************/
 #include "circ_buffer.h"
 #include "SW.h"
+#include "dio.h"
 /**********************************************************************
 * Definitions
 **********************************************************************/
 #define KEYPAD_RCV_BUFF_SIZE 30
 
-#define KEYPAD_WIDTH_X_HEIGHT 9
+#define KEYPAD_LONGEST_ROW 3 /**< the longest row among all keypads */
+#define KEYPAD_LONGEST_COL 3 /**< the longest column among all keypads */
+
+//TODO: add more keypad size as possible
+#define KEYPAD_3_X_3 9 /**< number of switches in 3x3 keypad */
+
 /**********************************************************************
 * Typedefs
 **********************************************************************/
@@ -32,14 +38,22 @@ typedef enum
   KEYPAD_MAX
 } Keypad_t;
 
+/**
+ * @brief The keypad configuration structure
+ */
 typedef struct 
 {
   Keypad_t Keypad;
-  SW_t Switches[KEYPAD_WIDTH_X_HEIGHT];
+  
+  SW_t Cols[KEYPAD_LONGEST_ROW];
+  const uint8_t ColsSize;
+  
+  DioChannel_t Rows[KEYPAD_LONGEST_COL];
+  const uint8_t RowsSize;
 } KeypadConfig_t;
-/**********************************************************************
+/******************************************************************************
 * Function Prototypes
-**********************************************************************/
+******************************************************************************/
 #ifdef __cplusplus
 extern "C"{
 #endif

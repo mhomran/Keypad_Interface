@@ -11,6 +11,7 @@
 ******************************************************************************/
 #include <inttypes.h>
 #include "keypad.h"
+#include "SW.h"
 #include "circ_buffer.h" 
 /******************************************************************************
 * Module Variable Definitions
@@ -34,8 +35,18 @@ static CircBuff_t KeypadBuff[KEYPAD_MAX];
 /**
  * @brief an array to hold the last state of the keypad switches
  */
-static SWState_t LastState[KEYPAD_MAX][KEYPAD_WIDTH_X_HEIGHT];
+static SWState_t LastState[KEYPAD_MAX][KEYPAD_LONGEST_COL];
 
+/**
+ * @brief The keypad characters
+ * //TODO: add the characters of your keypad set.
+ */
+static const uint8_t KeypadSet[KEYPAD_3_X_3] =
+{
+  '0', '1', '2',
+  '3', '4', '5',
+  '6', '7', '8'
+};
 /******************************************************************************
 * Function : Keypad_Init()
 *//**
@@ -53,19 +64,22 @@ Keypad_Init(KeypadConfig_t* const Config)
       return;
     }
 
+  uint8_t Col;
+  uint8_t Keypad;
+
   gConfig = Config;
 
-  for(uint8_t i = 0; i < KEYPAD_MAX; i++)
+  for(Keypad = 0; Keypad < KEYPAD_MAX; Keypad++)
     {
-      KeypadBuff[i] = CircBuff_Create(KeypadData[i], KEYPAD_RCV_BUFF_SIZE);
+      KeypadBuff[Keypad] = CircBuff_Create(KeypadData[Keypad],
+       KEYPAD_RCV_BUFF_SIZE);
 
-      //make sure the initial state is released
-      for(uint8_t sw = 0; sw < KEYPAD_WIDTH_X_HEIGHT; sw++)
+      //the initial state of columns switches is released
+      for(Col = 0; Col < gConfig[Keypad].ColsSize; Col++)
         {
-          LastState[i][sw] = SW_RELEASED;
+          LastState[Keypad][Col] = SW_RELEASED;
         }
     }
 }
-
 
 /***************************** END OF FILE ***********************************/

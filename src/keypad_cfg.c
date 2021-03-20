@@ -19,12 +19,18 @@
 static KeypadConfig_t KeypadConfig[KEYPAD_MAX] = {
   {
     .Keypad = KEYPAD_0, 
-    .Switches = 
+    
+    .Cols = 
     {
-      SW_0, SW_1, SW_2,
-      SW_2, SW_3, SW_4,
-      SW_5, SW_6, SW_7
-    }
+      SW_0, SW_1, SW_2
+    },
+    .ColsSize = 3,
+
+    .Rows = 
+    {
+      PORTA_0, PORTA_1, PORTA_2
+    },
+    .RowsSize = 3
   }
 };
 
