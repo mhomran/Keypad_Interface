@@ -22,13 +22,13 @@ static KeypadConfig_t KeypadConfig[KEYPAD_MAX] = {
     
     .Cols = 
     {
-      PORTA_3, PORTA_4, PORTA_5
+      PORTA_0, PORTA_1, PORTA_2
     },
     .ColsSize = 3,
 
     .Rows = 
     {
-      PORTA_0, PORTA_1, PORTA_2
+      PORTA_3, PORTA_4, PORTA_5
     },
     .RowsSize = 3
   }
