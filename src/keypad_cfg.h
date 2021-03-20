@@ -13,7 +13,6 @@
 * Includes
 **********************************************************************/
 #include "circ_buffer.h"
-#include "SW.h"
 #include "dio.h"
 /**********************************************************************
 * Definitions
@@ -45,7 +44,7 @@ typedef struct
 {
   Keypad_t Keypad;
   
-  SW_t Cols[KEYPAD_LONGEST_ROW];
+  DioChannel_t Cols[KEYPAD_LONGEST_ROW];
   const uint8_t ColsSize;
   
   DioChannel_t Rows[KEYPAD_LONGEST_COL];

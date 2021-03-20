@@ -53,6 +53,9 @@ typedef enum
 	PORTA_0,
 	PORTA_1,
 	PORTA_2,
+	PORTA_3,
+	PORTA_4,
+	PORTA_5,
 	DIO_CHANNEL_MAX
 }DioChannel_t;
 

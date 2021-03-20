@@ -12,6 +12,7 @@
 /* Include Unity */
 #include <stdio.h>
 #include "unity.h"
+#include "Mock_dio.h"
 /// @endcond
 
 #include "keypad.h" /**< module under the test */
@@ -23,7 +24,7 @@
 ******************************************************************************/
 static KeypadConfig_t * gConfig;
 
-/********************************(((((((**************************************/
+/*****************************************************************************/
 
 void 
 setUp(void)
@@ -41,6 +42,11 @@ tearDown(void)
 * Test cases
 ******************************************************************************/
 
+void
+test_OneCharIsReadWhenASwitchIsPressed(void)
+{
+  
+};
 
 /*****************************End of File ************************************/
 
